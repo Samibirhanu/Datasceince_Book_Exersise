@@ -26,26 +26,28 @@ for i, j in friendship_pairs:
 
 print(friendships)
 
-# def number_of_friends(user):
-#     """how many frends does _user_ have?"""
-#     user_id = user["id"]
-#     friend_ids = friendships[user_id]
-#     return len(friend_ids)
+def number_of_friends(user):
+    """how many frends does _user_ have?"""
+    user_id = user["id"]
+    friend_ids = friendships[user_id]
+    return len(friend_ids)
 
-#     total_connections = sum(number_of_friends(user) for user in users) # 24
+total_connections = sum(number_of_friends(user) for user in users) # 24
+print(total_connections)
 
-#     num_user = len(users)                                  # length of the users list
-#     avg_connections = total_connections / num_users        # 24 / 10 == 2.4 
+num_users = len(users)                                  # length of the users list
+avg_connections = total_connections / num_users        # 24 / 10 == 2.4 
 
-#     # Create a list (user_id, number_of_friends).
-#     num_friends_by_id = [(user["id"], number_of_friends(user))
-#                          for user in users]
-#     num_friends_by_id.sort(
-#         key=lambda id_and_friends: id_and_friends[1],
-    #     reverse=True)
-    
-    # # Each pair is (user_id, num_friends):
-    # # [(1,3), (2,3), (3,3), (5,3), (8,3),
-    # #  (0,2), (4,2), (6,2), (7,2), (9,1)]
+
+# Create a list (user_id, number_of_friends). 
+num_friends_by_id = [(user["id"], number_of_friends(user))
+                        for user in users]
+num_friends_by_id.sort(
+    key=lambda id_and_friends: id_and_friends[1],
+    reverse=True)
+
+# Each pair is (user_id, num_friends):
+# [(1,3), (2,3), (3,3), (5,3), (8,3),
+#  (0,2), (4,2), (6,2), (7,2), (9,1)]
    
 # continued
