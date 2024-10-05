@@ -11,6 +11,7 @@ users = [
     {"id": 8, "name": "Kate" },
     {"id": 9, "name": "Klein" }
 ] 
+print(users)
 
 # Friendship data based on their id number:
 friendship_pairs = [(0,1),(0,2),(1,2),(1,3),(2,3),(3,4),
@@ -51,3 +52,22 @@ num_friends_by_id.sort(
 #  (0,2), (4,2), (6,2), (7,2), (9,1)]
    
 # continued
+
+def foaf_ids_bad(user):
+    """foaf is shot for "friend of a friend" """
+    return [foaf_id
+            for friend_id in friendships[user["id"]]
+            for foaf_id in friendships[friend_id]]
+
+from collections import Counter
+
+def friends_of_friends(user):
+    user_id = user["id"]
+    return Counter(
+        foaf_ids_bad
+        for foaf_id in friendships[user_id]
+        for foaf_id in friendships[friend_in]
+        if foaf_id != user_id
+        and foaf_id not in friendships[user_id]
+    )
+print(friends_of_friends(users[3]))
