@@ -21,11 +21,26 @@ class CountingClicker:
 # print(clicker3)
 
 # Use assert to test
-clicker = CountingClicker()
-assert clicker.read == 0, "clicker should start with count 0"
+clicker = CountingClicker()         # object created
+assert clicker.read() == 0, "clicker should start with count 0"
 clicker.click()
 clicker.click()
 assert clicker.read() == 2, "after two clicks, clicker should have count 2"
 clicker.reset()
 assert clicker.read() == 0, "after reset clicker should be back to 0"
+
+# A subclass ingerits all the behavior of its parent class
+class NoResetClicker(CountingClicker):
+    # this class has all the same methods as CountingClicker
+
+    # lets modify reset method
+    def reset(self):
+        pass
+
+clicker2 = NoResetClicker()
+assert clicker2.read() == 0
+clicker2.click()
+assert clicker2.read() == 1
+clicker2.reset()
+assert clicker2.read() == 1, "reset shouldn't do anything"
 
