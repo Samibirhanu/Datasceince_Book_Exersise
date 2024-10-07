@@ -26,3 +26,7 @@ pairs = [(x, y)
          for y in range(10)]        # 100 pair (0, 0), (0, 1) .... (9, 9)
 print(pairs)
 
+increasing_pairs = [(x, y)                              # only pairs with x < y
+                    for x in range(10)                  # range (lo, hi) equals
+                    for y in range(x+1, 10)]            #[lo, lo + 1 ... hi - 1]
+print(increasing_pairs)
