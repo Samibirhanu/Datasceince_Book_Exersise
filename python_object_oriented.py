@@ -22,10 +22,23 @@ class CountingClicker:
 
 # Use assert to test
 clicker = CountingClicker()
-assert clicker.read == 0, "clicker should start with count 0"
+assert clicker.read() == 0, "clicker should start with count 0"
 clicker.click()
 clicker.click()
 assert clicker.read() == 2, "after two clicks, clicker should have count 2"
 clicker.reset()
 assert clicker.read() == 0, "after reset clicker should be back to 0"
 
+class NoResetClicker(CountingClicker):
+    # this class has all the same methods as countingClicker
+
+    # modify reset method
+    def reset(self):
+        pass
+
+clicker2 = NoResetClicker()
+assert clicker2.read() == 0
+clicker2.click()
+assert clicker2.read() == 1
+clicker2.reset()
+assert clicker2.read() == 1, "reset shouldn't do anything"
