@@ -6,9 +6,9 @@ four_uniform_randoms = [random.random() for _ in range(4)] # generates 4 random 
 print(four_uniform_randoms)    
 
 random.seed(10)
-print(random.random())
+print(random.random())                       # will Output the previously genrated random number
 
-random.seed(10)
+random.seed(10)                              
 print(random.random())
 
 # use random.randrange
@@ -32,3 +32,7 @@ print(winning_numbers)
 # to choose a sample element with replacement calling multiple times random.choice
 four_with_replacment = [random.choice(range(10)) for _ in range(4)]
 print(four_with_replacment)
+
+four_with_replacment = [random.choice(range(10)) for _ in range(4)]
+print(four_with_replacment)         # [9, 4, 4, 2]
+
